@@ -35,13 +35,22 @@ li {
     padding: 10px;
     border-bottom: 1px solid #eee;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
 li:last-child {
     border-bottom: none;
 }
-
+.edit-btn {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;   
+    margin-left: 60%;/* small spacing from text */
+}
 .delete-btn {
     background-color: #f44336;
     color: #fff;
@@ -50,4 +59,36 @@ li:last-child {
     border-radius: 5px;
     cursor: pointer;
     margin-left: auto;
+}
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .button-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
 }

@@ -8,21 +8,37 @@
             localStorage.setItem('tasks', JSON.stringify(tasks));
         }
 
-        // Function to render tasks
-        function renderTasks() {
-            const taskList = document.getElementById('taskList');
-            taskList.innerHTML = '';
-            const tasks = getTasks();
-            tasks.forEach((task, index) => {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <span>${task}</span>
-                <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
-            `;
-                taskList.appendChild(li);
-            });
-        }
+        
+       function renderTasks() {
+    const taskList = document.getElementById('taskList');
+    taskList.innerHTML = '';
+    const tasks = getTasks();
 
+    tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+
+        const span = document.createElement('span');
+        span.textContent = task;
+
+        // EDIT BUTTON
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.classList.add('edit-btn');
+        editBtn.addEventListener('click', () => editTask(index));
+
+        // DELETE BUTTON
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.addEventListener('click', () => deleteTask(index));
+
+        li.appendChild(span);
+        li.appendChild(editBtn);
+        li.appendChild(deleteBtn);
+
+        taskList.appendChild(li);
+    });
+}
         // Function to add a new task
         function addTask() {
             const taskInput = document.getElementById('taskInput');
